@@ -1,0 +1,72 @@
+$font-stack: Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+
+nav {
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+  
+    li {
+      display: inline-block;
+    }
+  
+    a {
+      display: block;
+      padding: 6px 12px;
+      text-decoration: none;
+    }
+  }
+  // Extend
+.error {
+    border: 1px #f00;
+    background-color: #fdd;
+  
+    &--serious {
+      @extend .error;
+      border-width: 3px;
+    }
+  }
+
+  $themeColours: (
+  'pink': #dc51ac,
+  'red': #d64651,
+  'orange': #e55937,
+);
+
+$columns: 5;
+
+@for $i from 1 through $columns {
+  .columns-#{$i} {
+    background-color: rgb(59, 153, 248);
+    width: (100% / $i);
+  }
+}
+
+$themeColours: (
+  'pink': #dc51ac,
+  'red': #d64651,
+  'orange': #e55937,
+);
+
+@each $themeColour, $i in $themeColours {
+  body {
+    &.#{$themeColour} {
+      background-color: $i;
+      @if $themeColour == 'pink' {
+        color: #000;
+      } @else if $themeColour == 'red' {
+        color: #fff;
+      } @else {
+        color: #deedee;
+      }
+    }
+  }
+}
+  
